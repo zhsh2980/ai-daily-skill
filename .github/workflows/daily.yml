@@ -22,6 +22,10 @@ concurrency:
   group: ai-daily
   cancel-in-progress: false
 
+# 权限配置
+permissions:
+  contents: write
+
 jobs:
   build:
     name: 生成 AI 资讯日报
