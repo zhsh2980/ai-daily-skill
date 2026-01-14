@@ -133,16 +133,15 @@ def main():
         print(f"   文件路径: {html_path}")
         print()
 
+        # 计算总资讯数
+        total_items = sum(
+            len(cat.get('items', []))
+            for cat in result.get('categories', [])
+        )
+
         # 6. 发送成功通知（可选）
         if email_enabled:
             print(f"[步骤 5/{total_steps}] 发送邮件通知...")
-
-            # 计算总资讯数
-            total_items = sum(
-                len(cat.get('items', []))
-                for cat in result.get('categories', [])
-            )
-
             notifier.send_success(target_date, total_items)
             print()
         else:
