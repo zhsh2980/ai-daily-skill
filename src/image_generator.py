@@ -36,17 +36,17 @@ class ImageGenerator:
     """Firefly Card API 图片生成器"""
 
     # 尺寸配置
-    MIN_WIDTH = 440
-    MAX_WIDTH = 680
-    MIN_HEIGHT = 500
-    MAX_HEIGHT = 2000
+    MIN_WIDTH = 480
+    MAX_WIDTH = 720
+    MIN_HEIGHT = 600
+    MAX_HEIGHT = 3000
 
     # 排版常量（基于中文阅读习惯）
     # 中文阅读舒适宽度：每行 20-28 个汉字
     CHAR_PER_LINE = 24        # 每行目标字符数
-    AVG_CHAR_WIDTH = 14       # 平均字符宽度（像素）
-    LINE_HEIGHT_RATIO = 1.6   # 行高与字号比
-    PADDING_RATIO = 0.10      # 边距占宽度比例
+    AVG_CHAR_WIDTH = 16       # 平均字符宽度（像素）- 增加以适应实际渲染
+    LINE_HEIGHT_RATIO = 1.8   # 行高与字号比 - 增加以获得更好效果
+    PADDING_RATIO = 0.08      # 边距占宽度比例 - 减少 padding
 
     def __init__(self, api_url: str = None, api_key: str = None):
         """
@@ -129,32 +129,32 @@ class ImageGenerator:
         # 根据复杂度确定基础配置
         configs = {
             "simple": {
-                "width": 480,
-                "padding": 18,
-                "fontScale": 1.05,
-                "base_height": 120,
-                "line_height": 22,
+                "width": 500,
+                "padding": 16,
+                "fontScale": 1.0,
+                "base_height": 150,
+                "line_height": 30,
             },
             "standard": {
-                "width": 540,
-                "padding": 22,
-                "fontScale": 1.1,
-                "base_height": 140,
-                "line_height": 24,
+                "width": 560,
+                "padding": 18,
+                "fontScale": 1.05,
+                "base_height": 180,
+                "line_height": 32,
             },
             "detailed": {
-                "width": 600,
-                "padding": 26,
-                "fontScale": 1.15,
-                "base_height": 160,
-                "line_height": 26,
+                "width": 620,
+                "padding": 20,
+                "fontScale": 1.1,
+                "base_height": 200,
+                "line_height": 34,
             },
             "complete": {
-                "width": 660,
-                "padding": 30,
-                "fontScale": 1.2,
-                "base_height": 180,
-                "line_height": 28,
+                "width": 680,
+                "padding": 22,
+                "fontScale": 1.15,
+                "base_height": 220,
+                "line_height": 36,
             }
         }
 
@@ -166,9 +166,9 @@ class ImageGenerator:
         adjusted_width = max(base_config["width"], min_width_for_content)
         adjusted_width = min(adjusted_width, self.MAX_WIDTH)
 
-        # 动态调整 padding（保持 8-12% 的比例）
+        # 动态调整 padding（保持 5-10% 的比例，更节省空间）
         adjusted_padding = int(adjusted_width * self.PADDING_RATIO)
-        adjusted_padding = max(16, min(adjusted_padding, 36))
+        adjusted_padding = max(14, min(adjusted_padding, 28))
 
         return {
             "width": adjusted_width,
@@ -203,39 +203,41 @@ class ImageGenerator:
         # 计算有效内容宽度
         content_width = width - 2 * padding
 
-        # 计算需要的行数（考虑换行）
+        # 计算需要的行数（考虑换行，使用保守估算）
         estimated_lines = 0
 
         for line in content.split('\n'):
             stripped = line.strip()
             if not stripped:
+                # 空行也占用空间
+                estimated_lines += 0.5
                 continue
 
             # 去除 Markdown 标记后的纯文本长度
             text_len = len(stripped)
 
-            # 根据元素类型估算行数
+            # 根据元素类型估算行数（使用保守值，乘以系数增加余量）
             if stripped.startswith("# "):
-                estimated_lines += 2.2  # 一级标题占位多
+                estimated_lines += 3.0  # 一级标题占位更多
             elif stripped.startswith("## "):
-                estimated_lines += 1.9
+                estimated_lines += 2.5
             elif stripped.startswith("### "):
-                estimated_lines += 1.6
+                estimated_lines += 2.0
             elif stripped.startswith("- ") or stripped.startswith("* "):
-                # 列表项需要考虑换行
-                lines_needed = max(1, (text_len * self.AVG_CHAR_WIDTH) / content_width)
+                # 列表项需要考虑换行，使用 1.5 倍余量
+                lines_needed = max(1.5, (text_len * self.AVG_CHAR_WIDTH * 1.5) / content_width)
                 estimated_lines += lines_needed
             elif stripped.startswith("**"):
                 # 粗体标题
-                lines_needed = max(1, (text_len * self.AVG_CHAR_WIDTH * 1.1) / content_width)
+                lines_needed = max(1.5, (text_len * self.AVG_CHAR_WIDTH * 1.3) / content_width)
                 estimated_lines += lines_needed
             else:
-                # 普通文本
-                lines_needed = max(1, (text_len * self.AVG_CHAR_WIDTH) / content_width)
+                # 普通文本，使用 1.3 倍余量
+                lines_needed = max(1.3, (text_len * self.AVG_CHAR_WIDTH * 1.3) / content_width)
                 estimated_lines += lines_needed
 
-        # 计算高度
-        content_height = int(estimated_lines * line_height)
+        # 计算高度，增加 20% 安全余量
+        content_height = int(estimated_lines * line_height * 1.2)
         total_height = base_height + content_height
 
         # 限制高度范围
