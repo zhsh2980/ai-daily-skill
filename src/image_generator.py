@@ -20,6 +20,13 @@ from src.config import (
 class ImageGenerator:
     """Firefly Card API 图片生成器"""
 
+    # 图片配置常量
+    DEFAULT_WIDTH = 400
+    MIN_HEIGHT = 400
+    MAX_HEIGHT = 1200
+    BASE_HEIGHT = 150  # 标题和日期等固定部分的高度
+    LINE_HEIGHT = 28   # 每行内容大约高度
+
     def __init__(self, api_url: str = None, api_key: str = None):
         """
         初始化图片生成器
@@ -32,6 +39,53 @@ class ImageGenerator:
         self.api_key = api_key or FIREFLY_API_KEY
         self.default_config = FIREFLY_DEFAULT_CONFIG.copy()
         self.enabled = ENABLE_IMAGE_GENERATION
+
+    def _calculate_height(self, content: str, width: int = DEFAULT_WIDTH) -> int:
+        """
+        根据内容长度计算图片高度
+
+        Args:
+            content: Markdown 内容
+            width: 图片宽度
+
+        Returns:
+            计算后的高度
+        """
+        # 统计内容行数（包括标题、列表项等）
+        lines = content.split('\n')
+        content_lines = 0
+
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+            # Markdown 标题占用更多高度
+            if line.startswith('# '):
+                content_lines += 2
+            elif line.startswith('## '):
+                content_lines += 1.8
+            elif line.startswith('### '):
+                content_lines += 1.5
+            # 列表项
+            elif line.startswith('- ') or line.startswith('* '):
+                content_lines += 1
+            # 粗体内容
+            elif line.startswith('**'):
+                content_lines += 1
+            # 普通内容行
+            elif line:
+                content_lines += 1
+
+        # 计算高度
+        calculated_height = int(self.BASE_HEIGHT + content_lines * self.LINE_HEIGHT)
+
+        # 限制在最小和最大高度之间
+        height = max(self.MIN_HEIGHT, min(calculated_height, self.MAX_HEIGHT))
+
+        # 打印调试信息
+        print(f"   内容行数: {int(content_lines)}, 计算高度: {calculated_height}, 最终高度: {height}")
+
+        return height
 
     def generate(
         self,
@@ -63,6 +117,28 @@ class ImageGenerator:
         if custom_config:
             request_data.update(custom_config)
         request_data["content"] = markdown_content
+
+        # 根据内容动态计算高度（如果用户没有自定义高度）
+        if custom_config and "height" in custom_config:
+            height = custom_config["height"]
+        else:
+            height = self._calculate_height(markdown_content)
+            request_data["height"] = height
+
+        # 根据高度动态调整 ratio（保持比例）
+        # 计算最接近的标准比例
+        width = request_data.get("width", self.DEFAULT_WIDTH)
+        ratio_wh = width / height
+        if ratio_wh > 0.8:
+            request_data["ratio"] = "1:1"
+        elif ratio_wh > 0.6:
+            request_data["ratio"] = "3:4"
+        elif ratio_wh > 0.45:
+            request_data["ratio"] = "9:16"
+        else:
+            request_data["ratio"] = "9:21"
+
+        print(f"   图片尺寸: {width}x{height}, 比例: {request_data['ratio']}")
 
         # 如果有 API Key，添加到请求头
         headers = {

@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **图片生成功能**
   - 集成 Firefly Card API，支持生成分享卡片图片
-  - 3:4 比例 (400x533)，适合社交媒体分享
+  - 高度自适应：根据内容长度动态计算图片高度（400-1200px）
+  - 比例自动选择：根据宽高比自动匹配最佳比例（1:1/3:4/9:16/9:21）
   - 纯黑太阳主题 (tempBlackSun)，思源宋体字体
   - 自动保存到 `docs/images/{日期}.png`
   - 支持通过环境变量 `ENABLE_IMAGE_GENERATION` 开关控制
