@@ -14,7 +14,8 @@ AI Daily 是一个 Claude Code Skill，帮助你在 Claude Code 中快速获取 
 - Claude AI 智能摘要和分类
 - 支持相对日期查询（昨天、前天等）
 - 可选生成精美网页（苹果风/深海蓝/秋日暖阳主题）
-- 可选生成分享卡片图片（3:4 比例，适合社交媒体分享）
+- 可选生成分享卡片图片（智能尺寸，适合社交媒体分享）
+- 可选生成小红书风格封面（3:4 比例，极简格栅设计）
 - 友好的用户体验，无数据时提供建议
 
 ---
@@ -85,6 +86,16 @@ cp -r plugins/ai-daily ~/.claude/skills/
 生成日报卡片图片
 ```
 
+### 生成小红书封面
+
+自动生成小红书风格封面，包含：
+- 3:4 比例（750x1000px）
+- 极简格栅主义设计
+- 黑白主色调 + 绿色点缀
+- 一键保存为 PNG 图片
+
+封面保存在 `docs/xiaohongshu/` 目录，在浏览器中打开 HTML 文件后点击"保存封面"按钮即可下载。
+
 ### 完整对话示例
 
 ```
@@ -121,6 +132,7 @@ ai-daily-skill/
 │       └── html-themes.md            # 网页主题提示词
 ├── docs/                            # 生成的网页和文档
 │   ├── images/                      # 分享卡片图片
+│   ├── xiaohongshu/                 # 小红书封面
 │   ├── css/                         # 样式文件
 │   └── *.html                       # 生成的 HTML 页面
 ├── src/                             # GitHub Actions 自动化脚本
@@ -130,6 +142,7 @@ ai-daily-skill/
 │   ├── claude_analyzer.py           # AI 分析
 │   ├── html_generator.py            # HTML 生成
 │   ├── image_generator.py           # 图片生成
+│   ├── xiaohongshu_generator.py     # 小红书封面生成
 │   └── notifier.py                  # 邮件通知
 └── README.md
 ```

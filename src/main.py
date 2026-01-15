@@ -22,6 +22,7 @@ from src.claude_analyzer import ClaudeAnalyzer
 from src.html_generator import HTMLGenerator
 from src.notifier import EmailNotifier
 from src.image_generator import ImageGenerator
+from src.xiaohongshu_generator import XiaohongshuGenerator
 
 
 def print_banner():
@@ -146,6 +147,7 @@ def main():
 
         # 6. 生成分享图片（可选）
         image_path = None
+        xhs_path = None
         if image_enabled:
             print(f"[步骤 5/{total_steps}] 生成分享卡片图片...")
             image_gen = ImageGenerator()
@@ -157,6 +159,12 @@ def main():
                 print(f"   图片已保存: {image_path}")
             else:
                 print("   图片生成失败或跳过")
+
+            # 生成小红书封面
+            print(f"   生成小红书封面...")
+            xhs_gen = XiaohongshuGenerator()
+            xhs_path = xhs_gen.generate(result)
+            print(f"   小红书封面: {xhs_path}")
             print()
         else:
             print("   (图片生成未启用，跳过)")

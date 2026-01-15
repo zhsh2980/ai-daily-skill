@@ -10,11 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **图片生成功能**
   - 集成 Firefly Card API，支持生成分享卡片图片
-  - 高度自适应：根据内容长度动态计算图片高度（400-1200px）
-  - 比例自动选择：根据宽高比自动匹配最佳比例（1:1/3:4/9:16/9:21）
+  - 高度自适应：根据内容长度动态计算图片高度（600-3000px）
+  - 比例自动选择：根据宽高比自动匹配最佳比例（1:1/3:4/2:3/9:16/9:19）
+  - 智能排版配置：根据内容复杂度自动调整宽度、padding、字体缩放
   - 纯黑太阳主题 (tempBlackSun)，思源宋体字体
   - 自动保存到 `docs/images/{日期}.png`
   - 支持通过环境变量 `ENABLE_IMAGE_GENERATION` 开关控制
+- **小红书封面生成**
+  - 3:4 比例封面（750x1000px）
+  - 极简格栅主义设计风格
+  - 黑白主色调 + 绿色点缀
+  - 自动提取关键词作为主标题
+  - 一键保存为 PNG 图片
+  - 保存在 `docs/xiaohongshu/` 目录
 
 ### Changed
 - GitHub Actions 工作流新增 Firefly API 环境变量配置
@@ -24,6 +32,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - 修复 SKILL.md 中 API 返回格式描述不准确的问题
 - 修复 image_generator.py 中未定义变量的 bug
+- 修复图片高度计算不足导致内容显示不全的问题
+  - 增加高度计算余量（20% 安全缓冲）
+  - 增加字符宽度估算（16px）
+  - 降低 padding 比例到 8%
+  - 空行也计入高度计算
 
 [Unreleased]: https://github.com/geekjourneyx/ai-daily-skill/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/geekjourneyx/ai-daily-skill/releases/tag/v1.0.0
