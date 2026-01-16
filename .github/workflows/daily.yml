@@ -81,8 +81,8 @@ jobs:
           DINGTALK_WEBHOOK_URL: ${{ secrets.DINGTALK_WEBHOOK_URL }}
           DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
 
-          # GitHub Pages URL（用于邮件中的链接）
-          GITHUB_PAGES_URL: ${{ github.event.repository.html_url }}.github.io
+          # GitHub Pages URL（用于钉钉/邮件中的链接）
+          GITHUB_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
 
           # GitHub 环境变量（用于日志链接）
           GITHUB_REPOSITORY: ${{ github.repository }}
