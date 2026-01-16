@@ -42,7 +42,7 @@ def print_banner():
 
 def get_target_date(days_offset: int = 2) -> str:
     """
-    获取目标日期
+    获取目标日期（基于北京时间）
 
     Args:
         days_offset: 向前偏移的天数，默认2天
@@ -50,7 +50,9 @@ def get_target_date(days_offset: int = 2) -> str:
     Returns:
         格式化的日期字符串 (YYYY-MM-DD)
     """
-    target_date = (datetime.now(timezone.utc) - timedelta(days=days_offset))
+    # 使用北京时间（UTC+8）计算日期，避免时区问题
+    beijing_tz = timezone(timedelta(hours=8))
+    target_date = (datetime.now(beijing_tz) - timedelta(days=days_offset))
     return target_date.strftime("%Y-%m-%d")
 
 
