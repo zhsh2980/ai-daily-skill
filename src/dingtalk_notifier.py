@@ -121,28 +121,30 @@ class DingTalkNotifier:
             count = len(cat.get("items", []))
             total += count
             if count > 0:
-                stats.append(f"{cat.get('icon', '')} {cat.get('name', '')}: {count}")
+                stats.append(f"- {cat.get('icon', '')} {cat.get('name', '')}: {count} 条")
 
-        # 构建 Markdown 内容（优化排版）
+        # 构建 Markdown 内容
         content = f"## 📰 AI Daily · {date}\n\n"
         
-        # 今日摘要（取前3条，避免太长）
-        content += "**📌 今日要点**\n\n"
-        for s in summary[:3]:
-            content += f"• {s}\n\n"
+        # 今日摘要
+        content += "### 📌 今日核心摘要\n"
+        for s in summary[:5]:
+            content += f"- {s}\n"
         
-        # 资讯统计（简洁一行）
+        # 资讯统计
         if stats:
-            content += f"**📊 共 {total} 条资讯**：{' | '.join(stats)}\n\n"
+            content += f"\n### 📊 资讯统计（共 {total} 条）\n"
+            content += "\n".join(stats)
         
-        # 关键词（一行显示）
+        # 关键词
         if keywords:
-            content += f"**🏷️ 关键词**：{' · '.join(keywords[:6])}\n\n"
+            content += f"\n\n### 🏷️ 关键词\n"
+            content += " · ".join(keywords[:8])
 
         # 详情链接
-        content += f"---\n\n[🔗 查看完整日报]({page_url})"
+        content += f"\n\n---\n\n[🔗 点击查看完整日报]({page_url})"
 
-        title = f"AI Daily · {date}"
+        title = f"📰 AI Daily · {date}"
         return self.send_markdown(title, content)
 
     def send_error(self, date: str, error: str) -> bool:
