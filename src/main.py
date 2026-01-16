@@ -15,7 +15,9 @@ sys.path.insert(0, str(project_root))
 from src.config import (
     ZHIPU_API_KEY,
     OUTPUT_DIR,
-    ENABLE_IMAGE_GENERATION
+    ENABLE_IMAGE_GENERATION,
+    ENABLE_DINGTALK,
+    GITHUB_PAGES_URL
 )
 from src.rss_fetcher import RSSFetcher
 from src.claude_analyzer import ClaudeAnalyzer
@@ -23,6 +25,7 @@ from src.html_generator import HTMLGenerator
 from src.notifier import EmailNotifier
 from src.image_generator import ImageGenerator
 from src.xiaohongshu_generator import XiaohongshuGenerator
+from src.dingtalk_notifier import DingTalkNotifier
 
 
 def print_banner():
@@ -70,8 +73,11 @@ def main():
     notifier = EmailNotifier()
     email_enabled = notifier._is_configured()
     image_enabled = ENABLE_IMAGE_GENERATION
+    dingtalk_enabled = ENABLE_DINGTALK
     total_steps = 6 if email_enabled else 5
     if image_enabled:
+        total_steps += 1
+    if dingtalk_enabled:
         total_steps += 1
 
     try:
@@ -180,6 +186,19 @@ def main():
             print()
         else:
             print("   (邮件通知未配置，跳过)")
+            print()
+
+        # 8. 发送钉钉通知（可选）
+        if dingtalk_enabled:
+            step_num = total_steps  # 钉钉是最后一步
+            print(f"[步骤 {step_num}/{total_steps}] 发送钉钉通知...")
+            dingtalk = DingTalkNotifier()
+            base_url = GITHUB_PAGES_URL or "https://zhsh2980.github.io/ai-daily-skill"
+            page_url = f"{base_url.rstrip('/')}/{target_date}.html"
+            dingtalk.send_daily_report(result, page_url)
+            print()
+        else:
+            print("   (钉钉通知未配置，跳过)")
             print()
 
         # 完成

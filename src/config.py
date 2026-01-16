@@ -256,6 +256,13 @@ FIREFLY_DEFAULT_CONFIG = {
 # 是否启用图片生成功能
 ENABLE_IMAGE_GENERATION = os.getenv("ENABLE_IMAGE_GENERATION", "false").lower() == "true"
 
+# ============================================================================
+# 钉钉机器人配置
+# ============================================================================
+DINGTALK_WEBHOOK_URL = os.getenv("DINGTALK_WEBHOOK_URL")  # Webhook URL
+DINGTALK_SECRET = os.getenv("DINGTALK_SECRET")            # 加签密钥
+ENABLE_DINGTALK = os.getenv("ENABLE_DINGTALK", "false").lower() == "true"
+
 
 def get_theme(theme_name: str) -> dict:
     """获取指定主题配置"""

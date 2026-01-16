@@ -76,6 +76,11 @@ jobs:
           FIREFLY_API_URL: ${{ secrets.FIREFLY_API_URL || 'https://fireflycard-api.302ai.cn/api/saveImg' }}
           FIREFLY_API_KEY: ${{ secrets.FIREFLY_API_KEY }}
 
+          # 钉钉机器人配置
+          ENABLE_DINGTALK: ${{ secrets.ENABLE_DINGTALK || 'false' }}
+          DINGTALK_WEBHOOK_URL: ${{ secrets.DINGTALK_WEBHOOK_URL }}
+          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
+
           # GitHub Pages URL（用于邮件中的链接）
           GITHUB_PAGES_URL: ${{ github.event.repository.html_url }}.github.io
 
