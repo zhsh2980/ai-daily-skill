@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Daily · 2026年1月15日 星期四</title>
     <meta name="description" content="每日 AI 前沿资讯，智能分类，快速掌握核心动态">
-    <meta name="keywords" content="GPT-5.2-Codex, Cursor, OpenAI, Cerebras, LangChain, Airbnb, Agent, Long-horizon, Inference, Llama, AI, 人工智能, 机器学习, 深度学习, 资讯, 日报">
+    <meta name="keywords" content="GPT-5.2-Codex, Cursor, Cerebras, LangChain, Airbnb, Agents, OpenAI, DeepSeek, Mistral, AI, 人工智能, 机器学习, 深度学习, 资讯, 日报">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-theme="blue">
@@ -24,11 +24,11 @@
             <section class="summary-card">
                 <h2 class="section-title">📌 今日核心摘要</h2>
                 <ul class="summary-list">
-                <li class="summary-item">OpenAI 发布 GPT-5.2-Codex，专注长周期任务与代码安全</li>
-                <li class="summary-item">Cursor 利用 GPT-5.2 自主运行一周，生成 300 万行 Rust 代码</li>
-                <li class="summary-item">Cerebras 与 OpenAI 合作，以低延迟推理作为核心差异化</li>
-                <li class="summary-item">LangChain 推出 Agent Builder，提倡从单代理开始构建</li>
-                <li class="summary-item">Airbnb 聘请 Meta Llama 负责人 Ahmad Al-Dahle 担任 CTO</li>
+                <li class="summary-item">OpenAI 发布 GPT-5.2-Codex，专注长时程任务与代码安全</li>
+                <li class="summary-item">Cursor 利用新模型自主运行一周，生成 300 万行 Rust 代码</li>
+                <li class="summary-item">Cerebras 与 OpenAI 合作，极致低延迟成为产品新差异化点</li>
+                <li class="summary-item">LangChain 推出 Agent Builder，提倡单体 Agent 优于多 Agent</li>
+                <li class="summary-item">Airbnb 挖角 Meta Llama 负责人 Ahmad Al-Dahle 担任 CTO</li>
                 </ul>
             </section>
 
@@ -43,20 +43,20 @@
 
                 <article class="news-card">
                     <div class="news-card-header">
-                        <h3 class="news-title">GPT-5.2-Codex API 发布</h3>
+                        <h3 class="news-title">OpenAI 发布 GPT-5.2-Codex</h3>
                         <a href="https://twitter.com/OpenAIDevs/status/2011499597169115219" class="item-link" target="_blank" rel="noopener">详情</a>
                     </div>
-                    <p class="news-summary">OpenAI 推出最强代码模型，专注长周期任务与漏洞挖掘</p>
-                    <div class="item-tags"><span class="tag">#OpenAI</span> <span class="tag">#GPT-5.2</span> <span class="tag">#Codex</span> <span class="tag">#API</span></div>
+                    <p class="news-summary">定位最强代码模型，支持长时程任务，具备最强代码漏洞理解能力</p>
+                    <div class="item-tags"><span class="tag">#OpenAI</span> <span class="tag">#GPT-5.2</span> <span class="tag">#Codex</span></div>
                 </article>
 
                 <article class="news-card">
                     <div class="news-card-header">
-                        <h3 class="news-title">Mistral Ministral 3 技术报告</h3>
-                        <a href="https://twitter.com/qtnx_/status/2011510403550024087" class="item-link" target="_blank" rel="noopener">详情</a>
+                        <h3 class="news-title">Mistral 公布 Ministral 3 配方</h3>
+                        <a href="https://twitter.com/eliebakouch/status/2011548952676499480" class="item-link" target="_blank" rel="noopener">详情</a>
                     </div>
-                    <p class="news-summary">强调剪枝与蒸馏技术，提供具体的小模型优化配方</p>
-                    <div class="item-tags"><span class="tag">#Mistral</span> <span class="tag">#Ministral</span> <span class="tag">#Distillation</span></div>
+                    <p class="news-summary">强调剪枝与蒸馏技术，包含具体的层剪枝和隐藏维剪枝启发式方法</p>
+                    <div class="item-tags"><span class="tag">#Mistral</span> <span class="tag">#Ministral</span> <span class="tag">#剪枝</span></div>
                 </article>
 
                 <article class="news-card">
@@ -64,8 +64,8 @@
                         <h3 class="news-title">DeepSeek Engram 记忆模块</h3>
                         <a href="https://twitter.com/LiorOnAI/status/2011468534887469448" class="item-link" target="_blank" rel="noopener">详情</a>
                     </div>
-                    <p class="news-summary">提出 MoE 计算与稀疏存储分离，实现 O(1) 查找</p>
-                    <div class="item-tags"><span class="tag">#DeepSeek</span> <span class="tag">#Memory</span> <span class="tag">#Engram</span></div>
+                    <p class="news-summary">提出 MoE 计算与 Engram 稀疏存储分离，实现 O(1) 复杂度的 n-gram 检索</p>
+                    <div class="item-tags"><span class="tag">#DeepSeek</span> <span class="tag">#Engram</span> <span class="tag">#Memory</span></div>
                 </article>
 
                 </div>
@@ -84,26 +84,26 @@
                         <h3 class="news-title">Cursor 集成 GPT-5.2-Codex</h3>
                         <a href="https://twitter.com/cursor_ai/status/2011500027945033904" class="item-link" target="_blank" rel="noopener">详情</a>
                     </div>
-                    <p class="news-summary">定位为长周期任务的前沿模型，展示自主编程能力</p>
-                    <div class="item-tags"><span class="tag">#Cursor</span> <span class="tag">#IDE</span> <span class="tag">#Coding</span></div>
+                    <p class="news-summary">成功利用新模型自主运行一周，生成 300 万行 Rust 代码构建浏览器</p>
+                    <div class="item-tags"><span class="tag">#Cursor</span> <span class="tag">#OpenAI</span> <span class="tag">#Agents</span></div>
                 </article>
 
                 <article class="news-card">
                     <div class="news-card-header">
-                        <h3 class="news-title">Gemini Personal Intelligence</h3>
+                        <h3 class="news-title">Gemini 推出个性化功能</h3>
                         <a href="https://twitter.com/Google/status/2011473056921706852" class="item-link" target="_blank" rel="noopener">详情</a>
                     </div>
-                    <p class="news-summary">Google 连接 Gmail 等应用推出个性化功能，强调隐私控制</p>
+                    <p class="news-summary">连接 Gmail、Photos 等应用数据，强调用户选择加入与隐私控制</p>
                     <div class="item-tags"><span class="tag">#Google</span> <span class="tag">#Gemini</span> <span class="tag">#Personalization</span></div>
                 </article>
 
                 <article class="news-card">
                     <div class="news-card-header">
-                        <h3 class="news-title">Airbnb 任命新 CTO</h3>
-                        <a href="https://twitter.com/Ahmad_Al_Dahle/status/2011440460821320056" class="item-link" target="_blank" rel="noopener">详情</a>
+                        <h3 class="news-title">LangSmith Agent Builder 上线</h3>
+                        <a href="https://twitter.com/LangChain/status/2011501888735494184" class="item-link" target="_blank" rel="noopener">详情</a>
                     </div>
-                    <p class="news-summary">Meta Llama 负责人 Ahmad Al-Dahle 加盟 Airbnb</p>
-                    <div class="item-tags"><span class="tag">#Airbnb</span> <span class="tag">#Meta</span> <span class="tag">#CTO</span></div>
+                    <p class="news-summary">将 Agent 视为文件系统，支持 Skills/MCP，提供无代码构建 Slack 代理</p>
+                    <div class="item-tags"><span class="tag">#LangChain</span> <span class="tag">#Agents</span> <span class="tag">#No-code</span></div>
                 </article>
 
                 </div>
@@ -119,29 +119,29 @@
 
                 <article class="news-card">
                     <div class="news-card-header">
-                        <h3 class="news-title">LangSmith Agent Builder</h3>
-                        <a href="https://twitter.com/LangChain/status/2011501888735494184" class="item-link" target="_blank" rel="noopener">详情</a>
-                    </div>
-                    <p class="news-summary">将代理视为文件系统，支持技能与子代理管理</p>
-                    <div class="item-tags"><span class="tag">#LangChain</span> <span class="tag">#Agent</span> <span class="tag">#Builder</span></div>
-                </article>
-
-                <article class="news-card">
-                    <div class="news-card-header">
                         <h3 class="news-title">Agent Skills 标准化</h3>
                         <a href="https://twitter.com/_philschmid/status/2011345054343053370" class="item-link" target="_blank" rel="noopener">详情</a>
                     </div>
-                    <p class="news-summary">推出标准化技能文件夹结构，兼容多生态系统</p>
-                    <div class="item-tags"><span class="tag">#Skills</span> <span class="tag">#Standardization</span> <span class="tag">#CLI</span></div>
+                    <p class="news-summary">Phil Schmid 推出标准化技能文件夹，兼容 Gemini/Claude/OpenCode 生态</p>
+                    <div class="item-tags"><span class="tag">#Skills</span> <span class="tag">#Interoperability</span> <span class="tag">#CLI</span></div>
                 </article>
 
                 <article class="news-card">
                     <div class="news-card-header">
-                        <h3 class="news-title">Cerebras 推理加速</h3>
-                        <a href="https://twitter.com/ArtificialAnlys/status/2011581689567592641" class="item-link" target="_blank" rel="noopener">详情</a>
+                        <h3 class="news-title">Modal 发布自托管推理指南</h3>
+                        <a href="https://twitter.com/charles_irl/status/2011484220032762114" class="item-link" target="_blank" rel="noopener">详情</a>
                     </div>
-                    <p class="news-summary">GLM-4.7 推理速度达 1445 tokens/s，强调速度即产品</p>
-                    <div class="item-tags"><span class="tag">#Cerebras</span> <span class="tag">#Inference</span> <span class="tag">#Speed</span></div>
+                    <p class="news-summary">论证自托管推理在经济学上可匹敌 API，包含 2 万 GPU 集群运维经验</p>
+                    <div class="item-tags"><span class="tag">#Modal</span> <span class="tag">#Inference</span> <span class="tag">#Ops</span></div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-card-header">
+                        <h3 class="news-title">UniversalRAG 多模态系统</h3>
+                        <a href="https://twitter.com/omarsar0/status/2011442693134754243" class="item-link" target="_blank" rel="noopener">详情</a>
+                    </div>
+                    <p class="news-summary">提出模态感知路由，避免强制单一嵌入空间，支持跨模态与粒度检索</p>
+                    <div class="item-tags"><span class="tag">#RAG</span> <span class="tag">#Multimodal</span> <span class="tag">#Retrieval</span></div>
                 </article>
 
                 </div>
@@ -151,34 +151,25 @@
                 <div class="category-header">
                     <span class="category-icon">📚</span>
                     <h2 class="category-title">研究论文</h2>
-                    <span class="category-count">3</span>
+                    <span class="category-count">2</span>
                 </div>
                 <div class="news-grid">
 
                 <article class="news-card">
                     <div class="news-card-header">
-                        <h3 class="news-title">DroPE 长上下文方案</h3>
+                        <h3 class="news-title">DroPE 移除位置编码</h3>
                         <a href="https://twitter.com/gabriberton/status/2011326182986564090" class="item-link" target="_blank" rel="noopener">详情</a>
                     </div>
-                    <p class="news-summary">移除 RoPE 并微调，在不损失性能下改善长上下文行为</p>
+                    <p class="news-summary">研究显示移除 RoPE 并微调可在标准数据集保持性能并改善长上下文行为</p>
                     <div class="item-tags"><span class="tag">#RoPE</span> <span class="tag">#Long Context</span> <span class="tag">#Fine-tuning</span></div>
                 </article>
 
                 <article class="news-card">
                     <div class="news-card-header">
-                        <h3 class="news-title">UniversalRAG 多模态系统</h3>
-                        <a href="https://twitter.com/omarsar0/status/2011442693134754243" class="item-link" target="_blank" rel="noopener">详情</a>
-                    </div>
-                    <p class="news-summary">提出模态感知路由，避免强制使用单一嵌入空间</p>
-                    <div class="item-tags"><span class="tag">#RAG</span> <span class="tag">#Multimodal</span> <span class="tag">#Routing</span></div>
-                </article>
-
-                <article class="news-card">
-                    <div class="news-card-header">
-                        <h3 class="news-title">VPBench 基准脆弱性</h3>
+                        <h3 class="news-title">VPBench 基准脆弱性研究</h3>
                         <a href="https://twitter.com/lisabdunlap/status/2011521499182875116" class="item-link" target="_blank" rel="noopener">详情</a>
                     </div>
-                    <p class="news-summary">研究发现视觉模型排名易受标记颜色等微小变化影响</p>
+                    <p class="news-summary">指出 VLM 排行榜易受微小视觉变化（如红蓝标记）影响，质疑基准鲁棒性</p>
                     <div class="item-tags"><span class="tag">#Benchmark</span> <span class="tag">#VLM</span> <span class="tag">#Evaluation</span></div>
                 </article>
 
@@ -189,17 +180,35 @@
                 <div class="category-header">
                     <span class="category-icon">🏆</span>
                     <h2 class="category-title">行业事件</h2>
-                    <span class="category-count">1</span>
+                    <span class="category-count">3</span>
                 </div>
                 <div class="news-grid">
 
                 <article class="news-card">
                     <div class="news-card-header">
-                        <h3 class="news-title">OpenAI 领导层变动</h3>
-                        <a href="https://twitter.com/barret_zoph/status/2011593621435531355" class="item-link" target="_blank" rel="noopener">详情</a>
+                        <h3 class="news-title">Airbnb 聘任 Meta Llama 负责人</h3>
+                        <a href="https://twitter.com/Ahmad_Al_Dahle/status/2011440460821320056" class="item-link" target="_blank" rel="noopener">详情</a>
                     </div>
-                    <p class="news-summary">Barret Zoph 离开 Thinking Machines Lab 并重返 OpenAI</p>
-                    <div class="item-tags"><span class="tag">#OpenAI</span> <span class="tag">#Leadership</span> <span class="tag">#Churn</span></div>
+                    <p class="news-summary">Ahmad Al-Dahle 离开 Meta 加入 Airbnb 担任 CTO，曾主导 Llama 开源战略</p>
+                    <div class="item-tags"><span class="tag">#Airbnb</span> <span class="tag">#Meta</span> <span class="tag">#CTO</span></div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-card-header">
+                        <h3 class="news-title">OpenAI 与 Cerebras 达成合作</h3>
+                        <a href="https://twitter.com/cerebras/status/2011531740804964855" class="item-link" target="_blank" rel="noopener">详情</a>
+                    </div>
+                    <p class="news-summary">聚焦于低延迟和高吞吐量推理，旨在提升 ChatGPT 体验并应对竞争</p>
+                    <div class="item-tags"><span class="tag">#OpenAI</span> <span class="tag">#Cerebras</span> <span class="tag">#Partnership</span></div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-card-header">
+                        <h3 class="news-title">OpenAI 领导层变动</h3>
+                        <a href="https://twitter.com/miramurati/status/2011577319295692801" class="item-link" target="_blank" rel="noopener">详情</a>
+                    </div>
+                    <p class="news-summary">Barret Zoph 离开 Thinking Machines Lab，Soumith Chintala 接任 CTO</p>
+                    <div class="item-tags"><span class="tag">#OpenAI</span> <span class="tag">#Leadership</span> <span class="tag">#TML</span></div>
                 </article>
 
                 </div>
@@ -207,7 +216,7 @@
 
 
         <footer class="keywords-footer">
-            <p>#关键词: GPT-5.2-Codex | Cursor | OpenAI | Cerebras | LangChain | Airbnb | Agent | Long-horizon | Inference | Llama</p>
+            <p>#关键词: GPT-5.2-Codex | Cursor | Cerebras | LangChain | Airbnb | Agents | OpenAI | DeepSeek | Mistral</p>
         </footer>
 
         </main>
