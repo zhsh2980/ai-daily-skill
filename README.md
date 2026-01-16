@@ -2,6 +2,9 @@
 
 > AI 资讯日报 Claude Code Skill - 每天自动获取、分析、归类 AI 前沿资讯
 
+> [!CAUTION]
+$\color{#FF0000}{想每天咖啡时间就帮你找到好的选题，自动发给你吗？ 有需要定制的朋友拉到底部通过公众号联系到我。}$
+
 ---
 
 ## 简介
@@ -285,9 +288,22 @@ MIT License
 
 ---
 
-## 作者
+## 💰 打赏 Buy Me A Coffee
 
-**geekjourney** - 极客/AI 探索者
+如果该项目帮助了您，请作者喝杯咖啡吧 ☕️
 
-- GitHub: [geekjourneyx](https://github.com/geekjourneyx)
-- 项目: [ai-daily-skill](https://github.com/geekjourneyx/ai-daily-skill)
+### WeChat
+
+<img src="https://raw.githubusercontent.com/geekjourneyx/awesome-developer-go-sail/main/docs/assets/wechat-reward-code.jpg" alt="微信打赏码" width="200" />
+
+## 🧑‍💻 作者
+- 作者：`geekjourneyx`
+- X（Twitter）：https://x.com/seekjourney
+- 公众号：极客杰尼
+
+关注公众号，获取更多 AI 编程、AI 工具与 AI 出海建站的实战分享：
+
+<p>
+<img src="https://raw.githubusercontent.com/geekjourneyx/awesome-developer-go-sail/main/docs/assets/qrcode.jpg" alt="公众号：极客杰尼" width="180" />
+</p>
+
