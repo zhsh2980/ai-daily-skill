@@ -73,8 +73,8 @@ def main():
         total_steps += 1
 
     try:
-        # 1. 计算目标日期 (今天 - 2天)
-        target_date = get_target_date(days_offset=2)
+        # 1. 计算目标日期 (昨天)
+        target_date = get_target_date(days_offset=1)
         print(f"[目标日期] {target_date}")
         print(f"   (北京时间: {datetime.now(timezone.utc) + timedelta(hours=8)} + 8h)")
         print()
