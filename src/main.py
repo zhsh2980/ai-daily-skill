@@ -75,8 +75,8 @@ def main():
         total_steps += 1
 
     try:
-        # 1. 计算目标日期 (昨天)
-        target_date = get_target_date(days_offset=1)
+        # 1. 计算目标日期 (前2天，确保 RSS 数据稳定可用)
+        target_date = get_target_date(days_offset=2)
         print(f"[目标日期] {target_date}")
         print(f"   (北京时间: {datetime.now(timezone.utc) + timedelta(hours=8)} + 8h)")
         print()
