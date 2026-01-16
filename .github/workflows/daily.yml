@@ -62,7 +62,7 @@ jobs:
         env:
           # Claude API 配置（使用智谱代理）
           ZHIPU_API_KEY: ${{ secrets.ZHIPU_API_KEY }}
-          ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
+          ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL || 'https://open.bigmodel.cn/api/anthropic' }}
 
           # 邮件通知配置
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
